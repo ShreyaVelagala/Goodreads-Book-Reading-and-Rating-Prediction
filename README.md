@@ -1,7 +1,9 @@
-Read Prediction:
+<h2> Welcome to Shreya Velagala's Goodreads Reading and Rating Prediction Recommender System Project! </h2>
+
+<b> Read Prediction: </b> <br>
 Initially, I implemented a logistic regression model using feature vectors that included max and average user-to-user Jaccard similarity, max and average item-to-item Jaccard similarity, and popularity, achieving an accuracy of 75.97%. During class, the professor explained that the test set was structured with equal numbers of positives and negatives, similar to the validation set. Leveraging this insight, I adjusted my approach by iterating through the test set and identifying books associated with each user. I ranked the books by popularity and classified the top half as "read" and the bottom half as "unread." This adjustment eliminated the need for the logistic regression model and solely relied on popularity and user-based thresholding, increasing my accuracy to approximately 80%.
 
-Rating Prediction:
+<b> Rating Prediction: </b> <br>
 For rating prediction, I implemented the general latent factor model with biases and gradient descent as discussed in class. Significant improvements came when I refined the regularizer and addressed cases where users or items were missing. Initially, I handled missing data by returning the global average (alpha). However, I realized that user and item biases represent deviations from the average rating. To improve accuracy, I adjusted the model to add alpha to the existing bias (user or item) when either was missing, which improved performance from ~1.42 MSE to ~1.41 MSE.
 
 I also optimized the model by reducing the number of iterations from 500 to 20 after noticing the MSE increased beyond 20 iterations, effectively implementing an early stopping mechanism. By experimenting with different regularization strengths, I found the optimal lambda value of 4, which brought my final MSE to 1.416.
